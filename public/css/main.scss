@@ -1,0 +1,349 @@
+/* 
+	Thanks for checking out my code!!
+
+
+	Copyright Adam Gedney 10/21/13
+	contact: adam.gedney@gmail.com
+	http://adamgedney.com
+
+"Good UI design is humble.” – Jono DiCarlo
+*/
+/*
+white: f6feff;
+icon light gray: cccccc;
+light gray: 5c5c5c;
+text mid gray: 5d5d5d;
+dark gray: 252525;
+red: d93330;
+blue: 5d95ba;
+
+----------------SASS------------------*/
+$white: #f7f8f2;
+$icon-gray: #ccc;
+$light-gray: #e7e8e3;
+$text-gray: #5d5d5d;
+$dark-gray: #252525;
+$black: #1c1d1d;
+$red: #a21d1b;
+$light-red: #ce252b;
+$blue: #5d95ba;
+$green: #479648;
+
+@mixin duration($time: .7s){
+		transition-duration: $time;
+-webkit-transition-duration: $time;
+}
+
+/*--------------------------------------Start CSS Reset---------------------------------------------*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, cite, code,del, em, img, strike, strong, sub, sup, tt, var,b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+
+ul {
+list-style: none;
+}
+
+/*--------------------------------------End CSS Reset / Start General-------------------------------*/
+
+
+body{
+background: $black;
+background-size: cover;
+background-attachment: fixed;
+color: $text-gray;
+font: 62.5% "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+}
+
+h1{
+font-size: 7.2em; /*18x4*/
+line-height: 1.5;
+font-family: 'Tangerine', cursive;
+}
+
+h2{
+font-size: 2.7em;/*18x3*/
+line-height: 1.5;
+}
+
+h3{
+font-size: 3em;/*18x2 - 6*/
+line-height: 1.5;
+}
+
+p, ul, dl{
+font-size: 1.8em;
+font-weight: 100;
+line-height: 1.5;
+margin-bottom: 20px;
+}
+
+ul{
+line-height: 1.5;
+}
+
+a{
+text-decoration: none;
+color: $blue;
+opacity: 1;
+@include duration;
+outline: none;
+}
+
+a:visited{
+	outline: none;
+}
+
+a:hover, input[type="submit"]:hover{
+opacity: .5;
+@include duration;
+}
+
+a.no-tran:hover{
+	opacity: 1;
+}
+
+img{
+	max-width: 100%;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: $icon-gray;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: $icon-gray;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: $icon-gray;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: $icon-gray;
+}
+
+/*--------------------------------------End General / Start Objects------------------------------------*/
+
+
+.hide-text{
+	text-indent: 200%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.red{
+	color: $red;
+}
+
+.light-gray{
+	color: $icon-gray;
+}
+
+.text-gray{
+	color: $text-gray;
+}
+
+.dark-gray{
+	color: $dark-gray;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.login-form a:hover, .submit-button:hover{
+	opacity: .5;
+	@include duration;
+}
+
+
+.login-form input[type=text], .login-form input[type=password], .search-bar input[type=text]{
+	font-size: 1.6em;
+	width: 150px;
+	height: 30px;
+	border: none;
+	padding-left: 5px;
+	/*text-transform: uppercase;*/
+}
+
+.submit-button{
+	width: 86px;
+	height: 31px;
+	background: $light-red;
+	border: none;
+	border-top: 3px solid $light-red;
+	// padding-top: 2px;
+	color: $white;
+	text-transform: uppercase;
+	@include duration;
+}
+
+.error{
+	font-size: 1em;
+	color: $red;
+	position: absolute;
+	opacity: 0;
+	margin-top: -13px;
+	font-size: .9em;
+	@include duration;
+}
+
+.inner{
+	padding: 0 20px;
+}
+
+/*--------------------------------------End Objects / Start Main------------------------------------*/
+
+header{
+	height: 90;
+	background: $red;
+	overflow: hidden;
+
+
+	.login-form{
+		float: right;
+		margin: 25px 0 0;
+		overflow: hidden;
+		width: 400px;
+		height: 70px;
+
+		a{
+			display: block;
+			width: 82px;
+			float: right;
+			text-decoration: underline;
+			@include duration;
+		}
+
+		#login-error{
+			margin: -1px 0 0 142px;
+		}
+	}
+
+	#forgot-pass{
+		display: block;
+		color: $white;
+		font-size: .9em;
+		width: 85px;
+	}
+}
+
+
+.featured{
+	.logo{
+		display: block;
+		width: 678px;
+		margin: 72px auto 0;
+	}
+
+	p{
+		text-align: center;
+		font-size: 2.1em;
+		font-weight: 100;
+	}
+
+	.search-bar{
+		width: 734px;
+		margin: 0 auto;
+		height: 54px;
+		overflow: hidden;
+
+		input[type=text]{
+			width: 635px;
+			height: 54px;
+		}
+
+		.search-submit{
+			display: inline-block;
+			position: relative;
+			height: 54px;
+
+			input[type=submit]{
+				@extend .submit-button;
+				width: 54px;
+				height: 55px;
+				margin-left: -3px;
+				border-top: 1px solid $light-red;
+			}
+
+			img{
+				display: block;
+				position: absolute;
+				top: 0;
+			}
+		}
+	}
+}
+
+.products{
+	overflow: hidden;
+	margin-top: 108px;
+	padding-left: 18px;
+
+	.product-block{
+		max-width: 324px;
+		max-height: 432px;
+		padding: 18px;
+		margin: 0 18px 18px 0;
+		float: left;
+		background: $dark-gray;
+
+		.product-image{
+			overflow: hidden;
+			width: 284px;
+			height: 216px;
+			margin: 0 auto;
+		}
+
+		h2{
+			color: $red;
+			margin-top: 18px;
+		}
+
+		p{
+			color: $text-gray;
+			font-size: 1.6em;
+		}
+	}
+
+	.product-block:hover{
+		background: $black;
+		@include duration;
+	}
+
+	a:hover{
+		opacity: 1;
+	}
+}
+
+
+
+
+
+
+
+
+footer{
+	height: 144px; /*18x8*/
+	padding-top: 70px;
+
+	p{
+		width: 220px;
+		margin: 0 auto;
+	}
+}
+
