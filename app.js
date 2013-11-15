@@ -1,35 +1,45 @@
 var express = require('express');
-var ejs = require('ejs');
+var fs = require('fs');
+var http = require('http');
+var path = require('path')
 
-//new express instance
 var app = express();
 
+//database connection
+// var mongodb = require('mongodb');
+// mongodb.connect('mongodb://localhost/mydb');
+
 //sets the templating engine to ejs
+app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(express.cookieParser('your secret here'));
+app.use(express.session());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/', function(req, res){
 
-	//simple render w/o data being passed
-	res.render('home-body');
+//dynamic controller routing
+fs.readdirSync('./controllers').forEach(function(file){
+	if(file.substr(-3) == '.js'){
+		var route = require('./controllers/' + file);
+		route.controller(app);
+	}
 });
 
-
-app.get('/test', function(req, res){
-	var data = {};
-	data.title = "I Like Meat";
-
-	//render "test" page passing the data object
-	//for dynamic echoing
-	res.render('test', data);
-});
-
-app.get('/admin', function(req, res){
-
-	res.render('admin');
-});
+//404 handling
+// app.get('/*', function(req, res){
+// 	res.render('error/404');
+// });
 
 //listen on port 3000
-app.listen(3000);
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+
 
