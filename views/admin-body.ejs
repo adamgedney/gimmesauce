@@ -1,81 +1,39 @@
-			<section>
-				<div class="featured inner">
-					<img class="logo" src="/images/saucelogo.png" alt="gimme sauce logo"/>
+<% if(loggedin){ %> 
+<% include header-loggedin %> 
+<% }else{ %>
+<% include header %>
+<% } %>
 
-					<p>Unique products for interesting people.</p>
 
-					<div class="search-bar">
-						<form method="post">
-							<input type="text" name="search" value="Search"/>
-							<div class="search-submit">
-								<input type="submit" value="" />
-								<img src="/images/search-icon.png" alt="search">
-							</div><!-- /.search-submit-->	
-						</form>
-					</div><!-- /.search-bar-->
-				</div><!-- /.featured-->
-			</section>
+	<section>
+		<div class="cms-container inner">
+			
+			<div class="cms-bar">
 
-			<section>
-				<div class="products">
-					<div class="product-block">
-						
-						<a target="_blank" href="http://www.amazon.com/gp/product/B000VQBQ1K/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000VQBQ1K&linkCode=as2&tag=saltnfresh-20">
+				<a href="admin/new_product" class="bar-link">
+				New Product
+				</a><!-- /.bar-link-->
 
-							<div class="product-image">
-								<img src="/images/products/ninja-ducks.jpg" alt="Rubber Duck">
-							</div><!-- /.product-image-->
+				<a href="admin/update_product" class="bar-link">
+				Update Product
+				</a><!-- /.bar-link-->
 
-							<h2>Ninja Ducks</h2>
+				<a href="admin/remove_product" class="bar-link">
+				Remove Product
+				</a><!-- /.bar-link-->
+			</div><!-- /.cms-bar-->
+			
+				<% if(cont == "new"){ %> 
+				<% include admin-new-product %> 
+				<% }if(cont == "update"){ %>
+				<% include admin-update-product %>
+				<% }if(cont == "remove"){ %>
+				<% include admin-remove-product %>
+				<% } %>
+				
+		
+		</div><!-- /.cms-container-->
+	</section>
 
-							<p>1 Dozen (12) awesome Ninja rubber ducks. These things kick ass!</p>
 
-						</a>
-					</div><!-- /.product-block-->
-
-					<div class="product-block">
-						
-						<a target="_blank" href="http://www.amazon.com/gp/product/B000VQBQ1K/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000VQBQ1K&linkCode=as2&tag=saltnfresh-20">
-
-							<div class="product-image">
-								<img src="/images/products/ninja-ducks.jpg" alt="Rubber Duck">
-							</div><!-- /.product-image-->
-
-							<h2>Ninja Ducks</h2>
-
-							<p>1 Dozen (12) awesome Ninja rubber ducks. These things kick ass!</p>
-
-						</a>
-					</div><!-- /.product-block-->
-
-					<div class="product-block">
-						
-						<a target="_blank" href="http://www.amazon.com/gp/product/B000VQBQ1K/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000VQBQ1K&linkCode=as2&tag=saltnfresh-20">
-
-							<div class="product-image">
-								<img src="/images/products/ninja-ducks.jpg" alt="Rubber Duck">
-							</div><!-- /.product-image-->
-
-							<h2>Ninja Ducks</h2>
-
-							<p>1 Dozen (12) awesome Ninja rubber ducks. These things kick ass!</p>
-
-						</a>
-					</div><!-- /.product-block-->
-
-					<div class="product-block">
-						
-						<a target="_blank" href="http://www.amazon.com/gp/product/B000VQBQ1K/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000VQBQ1K&linkCode=as2&tag=saltnfresh-20">
-
-							<div class="product-image">
-								<img src="/images/products/ninja-ducks.jpg" alt="Rubber Duck">
-							</div><!-- /.product-image-->
-
-							<h2>Ninja Ducks</h2>
-
-							<p>1 Dozen (12) awesome Ninja rubber ducks. These things kick ass!</p>
-
-						</a>
-					</div><!-- /.product-block-->
-				</div><!-- /.products-->
-			</section>
+<% include footer%>

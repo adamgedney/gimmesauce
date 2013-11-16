@@ -21,12 +21,19 @@
 </head>
 	<body>
 		<header class="inner">
-			<img src="/images/logomark.png" alt="gimme sauce logomark"/>
+			<a href="/"><img src="/images/logomark.png" alt="gimme sauce logomark"/></a>
+			<nav>
+				<ul>
+					<li><a href="/admin">Admin</a></li>
+				</ul>
+			</nav>
 
-			<div class="login-form">
-				<form action="action_logout" method="post">
-					<input id="login-submit-button" class="submit-button" type="submit" value="submit" />
-				</form>
+			
+
+			<div class="login-form"> 
+				<p class="user-display">Welcome, <%= username %></p>
+					
+					<button id="logout-submit-button" class="submit-button" >Log out</button>
 
 				<p id="login-error-message"></p>
 			</div><!-- /.login-form -->

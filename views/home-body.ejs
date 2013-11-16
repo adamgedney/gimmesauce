@@ -1,5 +1,10 @@
 
-<% include header %>	
+<% if(loggedin){ %> 
+<% include header-loggedin %> 
+<% }else{ %>
+<% include header %>
+<% } %>	
+
 			<section>
 				<div class="featured inner">
 					<img class="logo" src="/images/saucelogo.png" alt="gimme sauce logo"/>

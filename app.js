@@ -1,7 +1,8 @@
 var express = require('express');
 var fs = require('fs');
 var http = require('http');
-var path = require('path')
+var path = require('path');
+var MongoStore = require('connect-mongo')(express);
 
 var app = express();
 
@@ -17,8 +18,12 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
+app.use(express.cookieParser('1234567890QWERTY'));
+//uses mongo to store session data
+app.use(express.session({
+	store: new MongoStore({
+    url: 'mongodb://localhost:27017/sauce'
+  }),secret: '1234567890QWERTY'}));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 

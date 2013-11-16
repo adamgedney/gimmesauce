@@ -21,17 +21,16 @@
 </head>
 	<body>
 		<header class="inner">
-			<img src="/images/logomark.png" alt="gimme sauce logomark"/>
+			<a href="/"><img src="/images/logomark.png" alt="gimme sauce logomark"/></a>
 
 			<div class="login-form">
-				<form action="action_login" method="post">
 
 					<input id="username-login-field" name="username" type="text" placeholder="Username" autofocus="autofocus"/>
 					
 					<input id="password-login-field" name="password" type="password" placeholder="Password"/>
 						
-					<input id="login-submit-button" class="submit-button" type="submit" value="submit" />
-				</form>
+					<button id="login-submit-button" class="submit-button" >Submit</button>
+
 
 				<p id="login-error-message"></p>
 				<a id="forgot-pass" href="action_forgot_password">forgot password?</a>

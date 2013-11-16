@@ -1,34 +1,21 @@
-
-//retrieve the Database
 var mongoose = require('mongoose');
-var db = mongoose.connection;
 var Schema = mongoose.Schema;
 
-var User = new Schema({
-	"_id" : Schema.Types.ObjectId,
-	"username" : String,
-	"joined" : String,
-	"password" : String,
-	"first" : String,
-	"last" : String,
-	"email" : String
-});
+mongoose.connect("mongodb://localhost:27017/sauce");
+var db = mongoose.connection;
+
 
 var Product = new Schema({
-	"_id" : Schema.Types.ObjectId,
 	"img" : String,
 	"title" : String,
 	"desc" : String,
 	"added" : String,
-	"href" : String
+	"href" : String,
+	"status" : String
 });
 
-var UserModel = mongoose.model('User', User);
+var ProductModel = mongoose.model('Product', Product);
 
-//Connect to database
-mongoose.connect("mongodb://localhost:27017/sauce");
-		
-// var products = db.collection('products');
 
 //event listeners on connection
 db.on('error', function () {
@@ -44,26 +31,93 @@ db.once('close', function () {
 });
 
 
-// //exports
-// exports.find_all = function(fn){
 
-// 	UserModel.find().exec(function(err, data){
 
-// 		console.log(data);
 
-// 		fn(data);
+//--------------------------------------exports-----------------------------------------
 
-// 	});
-
-// };
-
-exports.find_by_username = function(query, fn){
+exports.create_product = function(query, fn){
 	
-	UserModel.find({"username" : query}).exec(function(err, data){
+	var product = new Product({
+		"img" : query.img,
+		"title" : query.title,
+		"desc" : query.desc,
+		"added" : query.added,
+		"href" : query.href,
+		"status" : query.status
+	});
+
+	console.log(product);
+
+	/*product.save(function(err){
+		
+		if(!err){
+
+		}else{
+			fn(err);
+		};
+	
+	});*/
+};
+
+
+
+
+
+
+exports.find_all = function(fn){
+
+	ProductModel.find().exec(function(err, data){
+		fn(data);
+	});
+};
+
+
+
+
+
+exports.find_by_id = function(query, fn){
+	
+	UserModel.find({"_id" : query.id}).exec(function(err, data){
 		fn(data);
 	});
 
 };
 
+
+
+
+
+exports.update_by_id = function(query, fn){
+	
+	// var query = {
+	// 	"img" : query.img,
+	// 	"title" : query.title,
+	// 	"desc" : query.desc,
+	// 	"added" : query.added,
+	// 	"href" : query.href,
+	//  "status" : query.status
+	// });
+
+	UserModel.findOneAndUpdate({"_id" : query.id}, query, function(err, data){
+		fn(data);
+	});
+};
+
+
+
+
+
+exports.delete_by_id = function(query, fn){
+
+	var q = {
+		"status" : "deleted"
+	};
+
+	UserModel.findOneAndUpdate({"_id" : query.id}, q, function(err, data){
+		fn(data);
+	});
+
+};
 		
 	

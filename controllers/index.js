@@ -5,36 +5,21 @@ module.exports.controller = function(app){
 	app.get('/', function(req, res){
 
 		//require('../models/products');
+		var data = {};
 
-		res.render('home-body');
+		if(req.session.username){
+			data.username = req.session.username;
+		}else{
+			data.username = "User";
+		}
+
+		if(req.session.loggedin == true){
+			data.loggedin = true;
+		}else{
+			data.loggedin = false;
+		};
+
+
+		res.render('home-body', data);
 	});
 }
-
-
-
-
-
-
-
-// app.get('/', function(req, res){
-
-// 	//simple render w/o data being passed
-// 	res.render('home-body');
-// });
-
-
-// app.get('/test', function(req, res){
-// 	var data = {};
-// 	data.title = "I Like Meat";
-
-// 	//render "test" page passing the data object
-// 	//for dynamic echoing
-// 	res.render('test', data);
-// });
-
-// app.get('/admin', function(req, res){
-
-// 	res.render('admin');
-// });
-
-

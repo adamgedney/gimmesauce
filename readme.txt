@@ -3,6 +3,8 @@ Intro to Node.js
 node app.js  RUNS app.js
 use node-dev app.js  to use node-dev
 
+killall node
+
 npm install
 
 go to localhost:3000
