@@ -1,11 +1,10 @@
 module.exports.controller = function(app){
 
-global.resp = {};
+global.data = {};
 
 	app.get('/', function(req, res){
 
 		//require('../models/products');
-		var data = {};
 
 		if(req.session.username){
 			data.username = req.session.username;
@@ -27,18 +26,12 @@ global.resp = {};
 		
 			products.find_all(function(r){
 			
-				resp = r;
+				data.response = r;
+
+				//renders view in callback
+				res.render('home-body', data);
 				
 			});//find_all
-
-		data.response = resp;
-
-		// console.log(resp + " response variable");
-
-
-		//renderer
-		res.render('home-body', data);
-		
 	});
 }
 

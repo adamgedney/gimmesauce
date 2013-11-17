@@ -3,14 +3,14 @@
 		<h2>Update Product</h2>
 
 		<form action="/action_update" method="post" enctype="multipart/form-data">
-			<input id="new-title" type="text" name="title" placeholder="Title" value="<%= response[0].title%>"/>
+			<input id="new-title" type="text" name="title" placeholder="Title" value="<%= response.title%>"/>
 
-			<input id="new-link" type="text" name="link" placeholder="Affiliate link" value="<%= response[0].href%>"/>
+			<input id="new-link" type="text" name="link" placeholder="Affiliate link" value="<%= response.href%>"/>
 
 			<input type="file" name="fileupload"/>
 			<input type="hidden" name="pid" value="<%= id %>" />
 
-			<textarea id="new-desc" name="description" placeholder="Description"><%= response[0].desc%></textarea>
+			<textarea id="new-desc" name="description" placeholder="Description"><%= response.desc%></textarea>
 
 			<input type="submit" value="submit"/>
 			<!-- <button id="new-prod" >Save</button> -->

@@ -1,7 +1,8 @@
 
 module.exports.controller = function(app){
 
-global.resp = {};
+// global.resp = {};
+global.dataUpdate = {};
 
 	app.get('/admin', function(req, res){
 
@@ -45,56 +46,63 @@ global.resp = {};
 
 	app.get('/admin/update_product', function(req, res){
 
+		
+
 		var products = require('../models/products.js');
 
-		var data = {};
-		data.cont = "update";
+		dataUpdate.cont = "update";
 
-		data.username = req.session.username;
+		dataUpdate.username = req.session.username;
 
 		if(req.session.loggedin == true){
-			data.loggedin = true;
+			dataUpdate.loggedin = true;
 		}else{
-			data.loggedin = false;
+			dataUpdate.loggedin = false;
 		};
 
 
-		//query database to get product  by id
-		
-		var pid = req.query.id;
-		console.log(pid);
-			
-			products.find_by_id({"id" : pid},function(r){
-			
-				resp = r;
-
-			});//find_all
-
-		data.response = resp;
-		data.id = pid;
-		
 	
-		res.render('admin-body', data);
+	
+		// var pid = "ObjectId('" + req.query.id + "')";
+		
+		// console.log(pid);
+			
+			
+			
+		var prod = {
+			"id" : req.query.id
+		};
 
-	});
+			//find product, and upon complete render view
+			products.find_by_id(prod,function(results){
+			
+				var pid = req.query.id;
+				// resp = r;
+
+				dataUpdate.id = pid;
+			
+				dataUpdate.response = results;
+
+				res.render('admin-body', dataUpdate);
+	
+			});//find_by_id
+	});// update
 
 
 
 
 	app.get('/admin/remove_product', function(req, res){
 
+		var products = require('../models/products.js');
+
 		var data = {};
-		data.content = "remove";
+		var id = req.query.id;
+		console.log("id " + id);
 
-		data.username = req.session.username;
 
-		if(req.session.loggedin == true){
-			data.loggedin = true;
-		}else{
-			data.loggedin = false;
-		};
-
-		res.render('admin-body', data);
+		products.delete_by_id(id, function(results){
+			res.redirect('back');
+		});
 
 	});
 }
