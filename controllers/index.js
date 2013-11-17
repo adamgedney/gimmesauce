@@ -1,6 +1,6 @@
-
 module.exports.controller = function(app){
 
+global.resp = {};
 
 	app.get('/', function(req, res){
 
@@ -20,6 +20,29 @@ module.exports.controller = function(app){
 		};
 
 
+
+
+		//query database to get products
+		var products = require('../models/products.js');
+		
+			products.find_all(function(r){
+			
+				resp = r;
+				
+			});//find_all
+
+		data.response = resp;
+
+		// console.log(resp + " response variable");
+
+
+		//renderer
+		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		res.render('home-body', data);
+		
 	});
 }
+
+
+
+

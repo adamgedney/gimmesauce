@@ -1,15 +1,18 @@
 <div class="cms-content">
 	<div class="form">
-		<h2>update Product</h2>
+		<h2>Update Product</h2>
 
-			<input id="new-title" type="text" name="title" placeholder="Title" value="<%= title %>"/>
+		<form action="/action_update" method="post" enctype="multipart/form-data">
+			<input id="new-title" type="text" name="title" placeholder="Title" value="<%= response[0].title%>"/>
 
-			<input id="new-link" type="text" name="link" placeholder="Affiliate link" value="<%= link %>"/>
+			<input id="new-link" type="text" name="link" placeholder="Affiliate link" value="<%= response[0].href%>"/>
 
-			<input type="file" />
+			<input type="file" name="fileupload"/>
 
-			<textarea id="new-desc" placeholder="Description"><%= desc %></textarea>
+			<textarea id="new-desc" name="description" placeholder="Description"><%= response[0].desc%></textarea>
 
-			<button id="new-prod" >Save</button>
+			<input type="submit" value="submit"/>
+			<!-- <button id="new-prod" >Save</button> -->
+		</form>
 	</div><!-- /.form-->
 </div><!-- /.cms-content-->

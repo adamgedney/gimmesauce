@@ -83,7 +83,7 @@ exports.find_by_username = function(query, fn){
 
 
 exports.find_by_username_and_pass = function(query, fn){
-	console.log(query.username + "  |  " + query.password);
+	
 	UserModel.find({"username" : query.username, "password": query.password}).exec(function(err, data){
 		fn(data);
 	});

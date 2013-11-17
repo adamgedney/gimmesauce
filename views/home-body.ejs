@@ -24,66 +24,36 @@
 			</section>
 
 			<section>
-				<div class="products">
+
+			<div class="products">
+			
+			<% for(var i=0; i<response.length; i++){%>
+				
 					<div class="product-block">
 						
-						<a target="_blank" href="http://www.amazon.com/gp/product/B000VQBQ1K/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000VQBQ1K&linkCode=as2&tag=saltnfresh-20">
+						<a target="_blank" href="<%= response[i].href %>">
 
 							<div class="product-image">
-								<img src="/images/products/ninja-ducks.jpg" alt="Rubber Duck">
+								<img src="<%= response[i].img %>" alt="<%= response[i].title %>">
 							</div><!-- /.product-image-->
 
-							<h2>Ninja Ducks</h2>
+							<h2><%= response[i].title %></h2>
 
-							<p>1 Dozen (12) awesome Ninja rubber ducks. These things kick ass!</p>
+							<p><%= response[i].desc %></p>
 
 						</a>
-					</div><!-- /.product-block-->
 
-					<div class="product-block">
+					<% if(loggedin){ %> 
+						 <div class="tools">
+							<a href="/admin/remove_product?id=<%= response[i]._id%>"><img src="/images/trash-icon.png" alt="trash icon"/></a>
+							<a href="/admin/update_product?id=<%= response[i]._id%>"><img src="/images/edit-icon.png" alt="edit icon"/></a>
+						</div><!-- /.tools-->
+					<% } %>
 						
-						<a target="_blank" href="http://www.amazon.com/gp/product/B000VQBQ1K/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000VQBQ1K&linkCode=as2&tag=saltnfresh-20">
-
-							<div class="product-image">
-								<img src="/images/products/ninja-ducks.jpg" alt="Rubber Duck">
-							</div><!-- /.product-image-->
-
-							<h2>Ninja Ducks</h2>
-
-							<p>1 Dozen (12) awesome Ninja rubber ducks. These things kick ass!</p>
-
-						</a>
 					</div><!-- /.product-block-->
+			<% } %>
 
-					<div class="product-block">
-						
-						<a target="_blank" href="http://www.amazon.com/gp/product/B000VQBQ1K/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000VQBQ1K&linkCode=as2&tag=saltnfresh-20">
-
-							<div class="product-image">
-								<img src="/images/products/ninja-ducks.jpg" alt="Rubber Duck">
-							</div><!-- /.product-image-->
-
-							<h2>Ninja Ducks</h2>
-
-							<p>1 Dozen (12) awesome Ninja rubber ducks. These things kick ass!</p>
-
-						</a>
-					</div><!-- /.product-block-->
-
-					<div class="product-block">
-						
-						<a target="_blank" href="http://www.amazon.com/gp/product/B000VQBQ1K/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B000VQBQ1K&linkCode=as2&tag=saltnfresh-20">
-
-							<div class="product-image">
-								<img src="/images/products/ninja-ducks.jpg" alt="Rubber Duck">
-							</div><!-- /.product-image-->
-
-							<h2>Ninja Ducks</h2>
-
-							<p>1 Dozen (12) awesome Ninja rubber ducks. These things kick ass!</p>
-
-						</a>
-					</div><!-- /.product-block-->
+					
 				</div><!-- /.products-->
 			</section>
 <% include footer %>

@@ -2,29 +2,8 @@
 module.exports.controller = function(app){
 var fs = require('fs');
 
-	app.get('/action_test', function(req, res){
 
-		var products = require('../models/products.js');
-				
-		var now = new Date();
-
-		var product = {
-			"img" : '',
-			"title" : 'Something',
-			"desc" : 'Something',
-			"added" : now,
-			"href" : 'Something',
-			"status" : "active"
-		};
-
-
-		products.create_product(product, function(response){
-			console.log(response);
-		});
-
-	});
-
-	/*app.post('/action_upload', function(req, res){
+	app.post('/action_upload', function(req, res){
 		console.log(req.files);
 
 		//writes file to server
@@ -32,7 +11,7 @@ var fs = require('fs');
 		  
 			//stores original filename and image upload path
 			var fileName = req.files.fileupload.originalFilename;
-			var newPath = "/Users/adamgedney/github/gimmesauce/public/uploads/" + fileName;
+			var newPath = "/Users/adamgedney/github/gimmesauce/public/images/products/" + fileName;
 
 
 
@@ -48,10 +27,11 @@ var fs = require('fs');
 				// loads model for database entry
 				var products = require('../models/products.js');
 				
+				var imgpath = "/images/products/" + fileName;
 				var now = new Date();
 
 				var product = {
-					"img" : newPath,
+					"img" : imgpath,
 					"title" : req.body.title,
 					"desc" : req.body.description,
 					"added" : now,
@@ -65,5 +45,5 @@ var fs = require('fs');
 
 				});//create product
 		});// readfile
-	});// app.post*/
+	});// app.post
 };// module

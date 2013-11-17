@@ -14,7 +14,7 @@ var Product = new Schema({
 	"status" : String
 });
 
-var ProductModel = mongoose.model('Product', Product);
+var ProductModel = mongoose.model('products', Product);
 
 
 //event listeners on connection
@@ -36,38 +36,33 @@ db.once('close', function () {
 
 //--------------------------------------exports-----------------------------------------
 
+//works
 exports.create_product = function(query, fn){
 	
-	var product = new Product({
-		"img" : query.img,
-		"title" : query.title,
-		"desc" : query.desc,
-		"added" : query.added,
-		"href" : query.href,
-		"status" : query.status
+	var product = new ProductModel({
+		img : query.img,
+		title : query.title,
+		desc : query.desc,
+		added : query.added,
+		href : query.href,
+		status : query.status
 	});
 
-	console.log(product);
-
-	/*product.save(function(err){
+	product.save(function(err){
 		
-		if(!err){
-
-		}else{
 			fn(err);
-		};
-	
-	});*/
+			
+	});
 };
 
 
 
 
 
-
+//works
 exports.find_all = function(fn){
 
-	ProductModel.find().exec(function(err, data){
+	ProductModel.find(function(err, data){
 		fn(data);
 	});
 };
@@ -75,10 +70,11 @@ exports.find_all = function(fn){
 
 
 
-
+//works
 exports.find_by_id = function(query, fn){
+
 	
-	UserModel.find({"_id" : query.id}).exec(function(err, data){
+	ProductModel.find({_id : query.id}, function(err, data){
 		fn(data);
 	});
 
@@ -89,17 +85,8 @@ exports.find_by_id = function(query, fn){
 
 
 exports.update_by_id = function(query, fn){
-	
-	// var query = {
-	// 	"img" : query.img,
-	// 	"title" : query.title,
-	// 	"desc" : query.desc,
-	// 	"added" : query.added,
-	// 	"href" : query.href,
-	//  "status" : query.status
-	// });
 
-	UserModel.findOneAndUpdate({"_id" : query.id}, query, function(err, data){
+	ProductModel.findOneAndUpdate({"_id" : query.id}, query, function(err, data){
 		fn(data);
 	});
 };

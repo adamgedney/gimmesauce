@@ -312,20 +312,22 @@ header{
 
 	.product-block{
 		max-width: 324px;
-		max-height: 432px;
+		height: 432px;
 		padding: 18px;
 		margin: 0 18px 18px 0;
 		float: left;
 		background: $dark-gray;
+		position: relative;
 
 		.product-image{
 			overflow: hidden;
 			width: 284px;
-			height: 216px;
+			height: 226px;
 			margin: 0 auto;
 		}
 
 		h2{
+			font-size: 1.6em;
 			color: $red;
 			margin-top: 18px;
 		}
@@ -333,6 +335,23 @@ header{
 		p{
 			color: $text-gray;
 			font-size: 1.6em;
+			height: 90px;
+			margin-bottom: 0;
+			overflow: hidden;
+		}
+
+		.tools{
+			position: absolute;
+			bottom: 3px;
+
+			a{
+				margin-left: 250px;
+				// display: inline-block;
+			}
+
+			a:first-child{
+				margin-left: 0;
+			}
 		}
 	}
 
@@ -355,7 +374,7 @@ header{
 }
 
 .cms-bar{
-	width: 455px;
+	width: 150px;
 	margin: 0 auto;
 		
 }
