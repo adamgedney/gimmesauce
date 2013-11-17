@@ -8,6 +8,7 @@
 			<input id="new-link" type="text" name="link" placeholder="Affiliate link" value="<%= response[0].href%>"/>
 
 			<input type="file" name="fileupload"/>
+			<input type="hidden" name="pid" value="<%= id %>" />
 
 			<textarea id="new-desc" name="description" placeholder="Description"><%= response[0].desc%></textarea>
 

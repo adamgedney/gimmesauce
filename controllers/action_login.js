@@ -11,10 +11,9 @@ module.exports.controller = function(app){
 		};
 		
 
-
 		user.find_by_username_and_pass(query, function(response){
 			
-			if(response.length > 0){
+			if(response.username == req.query.username && response.password == req.query.password){
 				//set session here
 				req.session.loggedin = true;
 				req.session.username = req.query.username;

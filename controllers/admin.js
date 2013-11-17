@@ -44,7 +44,9 @@ global.resp = {};
 
 
 	app.get('/admin/update_product', function(req, res){
-console.log(req);
+
+		var products = require('../models/products.js');
+
 		var data = {};
 		data.cont = "update";
 
@@ -58,9 +60,9 @@ console.log(req);
 
 
 		//query database to get product  by id
-		var products = require('../models/products.js');
-		var pid = req.query.id;
 		
+		var pid = req.query.id;
+		console.log(pid);
 			
 			products.find_by_id({"id" : pid},function(r){
 			
@@ -69,8 +71,9 @@ console.log(req);
 			});//find_all
 
 		data.response = resp;
+		data.id = pid;
+		
 	
-		res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
 		res.render('admin-body', data);
 
 	});

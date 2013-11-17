@@ -6,9 +6,6 @@ var MongoStore = require('connect-mongo')(express);
 
 var app = express();
 
-//database connection
-// var mongodb = require('mongodb');
-// mongodb.connect('mongodb://localhost/mydb');
 
 //sets the templating engine to ejs
 app.set('port', process.env.PORT || 3000);
@@ -18,8 +15,10 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
+app.disable('view cache');
 app.use(express.cookieParser('1234567890QWERTY'));
 //uses mongo to store session data
+// app.use(express.session({secret: '1234567890QWERTY'}));
 app.use(express.session({
 	store: new MongoStore({
     url: 'mongodb://localhost:27017/sauce'
