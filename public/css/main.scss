@@ -299,6 +299,13 @@ header{
 				position: absolute;
 				top: 0;
 			}
+
+			img.clear-search{
+				z-index: 10000;
+				left: -40px;
+				top: 16px;
+				position: absolute;
+			}
 		}
 	}
 }

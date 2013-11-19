@@ -51,6 +51,43 @@ module.exports.controller = function(app){
 			
 		});//find_all
 	});//app.post
+
+
+
+
+
+
+	app.get('/action_search/clear_search', function(req, res){
+
+		var products = require('../models/products.js');
+		var data = {};
+		
+
+		//get all products to build loop
+		var all_products = products.find_all(function(r){
+			
+			data.response = r;
+
+			//gets/sets session variables for proper header rendering
+			if(req.session.username){
+				data.username = req.session.username;
+			}else{
+				data.username = "User";
+			}
+
+			if(req.session.loggedin == true){
+				data.loggedin = true;
+			}else{
+				data.loggedin = false;
+			};
+
+
+			// re-render home on dislaying search results
+			res.render('home-body', data);
+
+
+		});//find_all
+	});//app.post
 }// class
 
 
