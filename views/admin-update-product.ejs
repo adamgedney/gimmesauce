@@ -10,7 +10,7 @@
 			<input type="file" name="fileupload"/>
 			<input type="hidden" name="pid" value="<%= id %>" />
 
-			<textarea id="new-desc" name="description" placeholder="Description"><%= response.desc%></textarea>
+			<textarea id="new-desc" name="description" placeholder="Description" maxlength="180" ><%= response.desc%></textarea>
 
 			<input type="submit" value="submit"/>
 			<!-- <button id="new-prod" >Save</button> -->

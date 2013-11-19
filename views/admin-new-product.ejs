@@ -1,6 +1,6 @@
 <div class="cms-content">
 	<div class="form">
-		<h2>New Product</h2>
+		<h2>Add a Product</h2>
 
 		<form action="/action_upload" method="post" enctype="multipart/form-data">
 			<input id="new-title" type="text" name="title" placeholder="Title"/>
@@ -9,7 +9,7 @@
 
 			<input type="file" name="fileupload"/>
 
-			<textarea id="new-desc" name="description" placeholder="Description"></textarea>
+			<textarea id="new-desc" name="description" placeholder="Description" maxlength="180" ></textarea>
 
 			<input type="submit" value="submit"/>
 			<!-- <button id="new-prod" >Save</button> -->

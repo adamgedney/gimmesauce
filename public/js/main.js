@@ -1,5 +1,8 @@
 $(function(){
 
+//forces page to load to top
+$(this).scrollTop(0);
+
 
 $(document).on('click', '#login-submit-button', function(e){
 e.preventDefault();
@@ -78,6 +81,36 @@ var password = $('#password-login-field').val();
 		}
 	});// /ajax
 });// /submit
+
+
+
+
+
+
+//------------------------------------Footer animations--------------------------------
+$('footer').removeClass('fadeInUp');
+$('footer').addClass('fadeOutDown');
+
+$(document).on('mouseover', 'footer', function(e){
+
+	$('footer').removeClass('fadeOutDown');
+	$('footer').addClass('fadeInUp');
+
+
+});
+
+
+$(document).on('mouseout', 'footer', function(e){
+
+	$('footer').removeClass('fadeInUp');
+	$('footer').addClass('fadeOutDown');
+
+
+});
+
+
+
+
 
 
 
