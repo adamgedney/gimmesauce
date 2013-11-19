@@ -87,26 +87,7 @@ var password = $('#password-login-field').val();
 
 
 
-//------------------------------------Footer animations--------------------------------
-$('footer').removeClass('fadeInUp');
-$('footer').addClass('fadeOutDown');
 
-$(document).on('mouseover', 'footer', function(e){
-
-	$('footer').removeClass('fadeOutDown');
-	$('footer').addClass('fadeInUp');
-
-
-});
-
-
-$(document).on('mouseout', 'footer', function(e){
-
-	$('footer').removeClass('fadeInUp');
-	$('footer').addClass('fadeOutDown');
-
-
-});
 
 
 

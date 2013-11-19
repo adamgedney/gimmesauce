@@ -169,16 +169,6 @@ textarea{
 	@include duration;
 }
 
-
-.login-form input[type=text], .login-form input[type=password], .search-bar input[type=text]{
-	font-size: 1.6em;
-	width: 150px;
-	height: 30px;
-	border: none;
-	padding-left: 5px;
-	/*text-transform: uppercase;*/
-}
-
 .submit-button, input[type=submit]{
 	width: 86px;
 	height: 31px;
@@ -189,6 +179,16 @@ textarea{
 	color: $white;
 	text-transform: uppercase;
 	@include duration;
+}
+
+
+.login-form input[type=text], .login-form input[type=password], .search-bar input[type=text]{
+	font-size: 1.6em;
+	width: 300px;
+	height: 30px;
+	border: none;
+	padding-left: 5px;
+	/*text-transform: uppercase;*/
 }
 
 .error{
@@ -248,31 +248,6 @@ header{
 	}
 }
 
-.login-form{
-	float: right;
-	margin: 14px 0 0;
-	overflow: hidden;
-	// width: 400px;
-	height: 57px;
-
-	p.user-display{
-		display: inline;
-		color: $white;
-		padding-right: 36px;
-	}
-
-	a{
-		display: block;
-		width: 82px;
-		float: right;
-		text-decoration: underline;
-		@include duration;
-	}
-
-	#login-error{
-		margin: -1px 0 0 142px;
-	}
-}
 
 
 .featured{
@@ -311,6 +286,7 @@ header{
 			input[type=submit]{
 				@extend .submit-button;
 				display: inline-block;
+				background: url(../images/submit.jpg) no-repeat;
 				width: 54px;
 				height: 61px;
 				margin-left: -3px;
@@ -326,6 +302,8 @@ header{
 		}
 	}
 }
+
+
 
 .products{
 	overflow: hidden;
@@ -392,9 +370,63 @@ header{
 /*-------------------------------------------Admin Content-----------------------------------*/
 
 
-.cms-container{
-
+.cms{
+min-height: 1000px;
 }
+
+.login-form{
+	margin: 14px auto 0;
+	overflow: hidden;
+	width: 300px;
+	height: 216px;
+	position: absolute;
+	top: 30%;
+	bottom: 30%;
+	left: 30%;
+	right: 30%;
+
+	p.user-display{
+		display: inline;
+		color: $white;
+		padding-right: 36px;
+	}
+
+	a{
+		display: block;
+		width: 82px;
+		float: right;
+		text-decoration: underline;
+		@include duration;
+	}
+
+	.submit-button{
+		width: 300px;
+		height: 45px;
+	}
+
+	input[type=text], input[type=password]{
+		margin-bottom: 18px;
+		height: 45px;
+	}
+
+	#login-error{
+		margin: -1px 0 0 142px;
+	}
+}
+
+
+.logout-button{
+	color: $white;
+	float: right;
+	width: 400px;
+	padding-top: 12px;
+
+	p{
+		display: inline-block;
+		margin-right: 36px;
+	}
+}
+
 
 .cms-bar{
 	width: 150px;

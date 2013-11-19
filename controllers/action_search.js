@@ -1,39 +1,57 @@
 module.exports.controller = function(app){
 
-global.data = {};
+// global.data = {};
 
-	app.get('/', function(req, res){
+	app.post('/action_search', function(req, res){
 
-		//require('../models/products');
-
-		if(req.session.username){
-			data.username = req.session.username;
-		}else{
-			data.username = "User";
-		}
-
-		if(req.session.loggedin == true){
-			data.loggedin = true;
-		}else{
-			data.loggedin = false;
-		};
-
-
-
-
-		//query database to get products
+		var data = {};
 		var products = require('../models/products.js');
-		
-			products.find_all(function(r){
-			
-				data.response = r;
+		var query = req.body.search.toLowerCase();
 
-				//renders view in callback
-				res.render('home-body', data);
-				
-			});//find_all
-	});
-}
+		var result_array = [];
+		data.response = result_array;
+
+
+
+		//get all products to build loop
+		var all_products = products.find_all(function(r){
+			
+			//loops through all products to push only those that match query
+			r.forEach(function(item){
+				if(item.status == "active"){
+					var title = item.title.toLowerCase();
+					var desc = item.desc.toLowerCase();
+
+
+					if(title.indexOf(query) != -1 || desc.indexOf(query) != -1){
+						// console.log(title.indexOf(query));
+						result_array.push(item);
+						console.log(result_array);
+					};
+				};// if active
+			});
+
+
+			//gets/sets session variables for proper header rendering
+			if(req.session.username){
+				data.username = req.session.username;
+			}else{
+				data.username = "User";
+			}
+
+			if(req.session.loggedin == true){
+				data.loggedin = true;
+			}else{
+				data.loggedin = false;
+			};
+
+			
+			// re-render home on dislaying search results
+			res.render('home-body', data);
+			
+		});//find_all
+	});//app.post
+}// class
 
 
 

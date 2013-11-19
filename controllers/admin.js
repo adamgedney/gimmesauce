@@ -4,22 +4,31 @@ module.exports.controller = function(app){
 // global.resp = {};
 global.dataUpdate = {};
 
+
+
+
+
 	app.get('/admin', function(req, res){
 
 		var data = {};
-
-		data.cont = "new";
-		data.username = req.session.username;
-
+	
+		//checks state to determine if login screen should be shown
 		if(req.session.loggedin == true){
+
+			data.cont = "new";
+			data.username = req.session.username;
 			data.loggedin = true;
+
+			res.render('admin-body', data);
+
 		}else{
 			data.loggedin = false;
+
+			res.render('cms-login');
 		};
-
-		res.render('admin-body', data);
-
 	});
+
+
 
 
 
@@ -44,6 +53,8 @@ global.dataUpdate = {};
 
 
 
+
+
 	app.get('/admin/update_product', function(req, res){
 
 		
@@ -60,14 +71,6 @@ global.dataUpdate = {};
 			dataUpdate.loggedin = false;
 		};
 
-
-	
-	
-		// var pid = "ObjectId('" + req.query.id + "')";
-		
-		// console.log(pid);
-			
-			
 			
 		var prod = {
 			"id" : req.query.id
@@ -91,6 +94,8 @@ global.dataUpdate = {};
 
 
 
+
+
 	app.get('/admin/remove_product', function(req, res){
 
 		var products = require('../models/products.js');
@@ -105,4 +110,4 @@ global.dataUpdate = {};
 		});
 
 	});
-}
+}//calss
