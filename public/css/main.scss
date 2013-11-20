@@ -114,22 +114,22 @@ img{
 	max-width: 100%;
 }
 
-::-webkit-input-placeholder { /* WebKit browsers */
-    color: $text-gray;
-    font-size: 1.4em;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: $text-gray;
-    font-size: 1.4em;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: $text-gray;
-    font-size: 1.4em;
-}
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: $text-gray;
-    font-size: 1.4em;
-}
+// ::-webkit-input-placeholder { /* WebKit browsers */
+//     color: $text-gray;
+//     font-size: 1.2em;
+// }
+// :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+//     color: $text-gray;
+//     font-size: 1.2em;
+// }
+// ::-moz-placeholder { /* Mozilla Firefox 19+ */
+//     color: $text-gray;
+//     font-size: 1.2em;
+// }
+// :-ms-input-placeholder { /* Internet Explorer 10+ */
+//     color: $text-gray;
+//     font-size: 1.2em;
+// }
 
 
 textarea{
@@ -291,6 +291,7 @@ header{
 				height: 61px;
 				margin-left: -3px;
 				border-top: 2px solid $light-red;
+				padding: 0 0 0 5px;
 
 			}
 

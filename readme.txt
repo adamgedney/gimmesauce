@@ -56,3 +56,20 @@ npm install -g node-dev
 
 
 
+
+digital ocean server
+
+node installed. (most recent version required for the ubuntu virtual server)
+forever installed to keep server running after terminal is closed
+direectory is /var/www/
+
+node app.'s starts node w/o forever
+
+sudo forever start app.js    starts forever and node
+
+forever stopall    stops forever
+
+sudo forever list     shows running forever instances
+
+
+

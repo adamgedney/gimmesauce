@@ -19,11 +19,13 @@ var password = $('#password-login-field').val();
 			password: password
 		},
 		success: function(response){
-
-			console.log(response);
+	console.log(response.error + "this is the ajax call shitting the bed");
+			
 
 			if(response.success == "user logged in"){
 				window.location ='/admin';
+			}else{
+				console.log("user credentials not correct");
 			}
 		}
 	});// /ajax
@@ -38,7 +40,7 @@ $(document).on('click', '#logout-submit-button', function(e){
 e.preventDefault();
 
 	$.ajax({
-		url : 'http://localhost:3000/action_logout',
+		url : '/action_logout',
 		type: 'get',
 		dataType: 'json',
 		success: function(response){
@@ -46,7 +48,7 @@ e.preventDefault();
 			console.log(response);
 
 			if(response.success == "user has been logged out"){
-				window.location ='http://localhost:3000';
+				window.location ='/';
 			}
 		}
 	});// /ajax
@@ -64,7 +66,7 @@ var username = $('#username-login-field').val();
 var password = $('#password-login-field').val();
 
 	$.ajax({
-		url : 'http://localhost:3000/action_login',
+		url : '/action_login',
 		type: 'get',
 		dataType: 'json',
 		data: {

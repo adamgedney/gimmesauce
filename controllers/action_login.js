@@ -12,19 +12,28 @@ module.exports.controller = function(app){
 		
 
 		user.find_by_username_and_pass(query, function(response){
-			
-			if(response.username == req.query.username && response.password == req.query.password){
-				//set session here
-				req.session.loggedin = true;
-				req.session.username = req.query.username;
-				
-				res.contentType('json');
-	  			res.send({success : "user logged in" });
-  			}else{
+			// console.log(response);
+			if(response === null){
 
-  				res.contentType('json');
-	  			res.send({error : "failed to retrieve user" });
-  			};//if response
+				res.contentType('json');
+	  			res.send({error : "response from database null" });
+
+	  		}else{
+	  			
+
+	  			if(response.username == req.query.username && response.password == req.query.password){
+					//set session here
+					req.session.loggedin = true;
+					req.session.username = req.query.username;
+					
+					res.contentType('json');
+		  			res.send({success : "user logged in" });
+	  			}else{
+
+	  				res.contentType('json');
+		  			res.send({error : "failed to retrieve user" });
+	  			};//if response
+	  		};
 		});//user.find
 	});// app.get
 };//module

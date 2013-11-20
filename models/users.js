@@ -13,9 +13,13 @@ exports.find_by_username_and_pass = function(query, fn) {
 
 	mongoClient.connect('mongodb://localhost:27017/' + databaseName, function(err, db) {
 
-		db.collection(collectionName).findOne(query, function(err, results) {
+		db.collection(collectionName).findOne(query, function(results) {
 			
-			fn(results);
+			
+				fn(results);
+	
+
+			
 			// db.close();
 		});
 	});
